@@ -46,10 +46,11 @@ public class CollectionUtilities {
     return Collections.unmodifiableList(workList);
   }
 
-  public static <T, U> U foldLeft(List<T> ts,
-                                  U identity,
-                                  Function<U, Function<T, U>> f) {
-    throw new RuntimeException("To be implemented");
+  public static <T, U> U foldLeft(List<T> ts, U identity, Function<U, Function<T, U>> f) {
+    for (T t : ts) {
+      identity = f.apply(identity).apply(t);
+    }
+    return identity;
   }
 
   public static <T> List<T> append(List<T> list, T t) {

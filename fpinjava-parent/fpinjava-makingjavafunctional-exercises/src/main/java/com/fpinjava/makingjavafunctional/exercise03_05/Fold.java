@@ -6,8 +6,10 @@ import java.util.List;
 
 public class Fold {
 
-  public static Integer fold(List<Integer> is, Integer identity,
-                             Function<Integer, Function<Integer, Integer>> f) {
-    throw new RuntimeException("To be implemented");
+  public static Integer fold(List<Integer> is, Integer identity, Function<Integer, Function<Integer, Integer>> f) {
+    for (Integer i : is) {
+      identity = f.apply(identity).apply(i);
+    }
+    return identity;
   }
 }

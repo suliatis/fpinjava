@@ -69,11 +69,11 @@ public class CollectionUtilities {
     return Collections.unmodifiableList(ts);
   }
 
-  public static <T> List<T> prepend(T t, List<T> list) {
-    throw new RuntimeException("To be implemented");
+  public static <T> List<T> prepend(T t, List<T> ts) {
+    return foldLeft(ts, list(t), zs -> z -> append(zs, z));
   }
 
   public static <T> List<T> reverse(List<T> list) {
-    throw new RuntimeException("To be implemented");
+    return foldLeft(list, list(), zs -> z -> prepend(z, zs));
   }
 }

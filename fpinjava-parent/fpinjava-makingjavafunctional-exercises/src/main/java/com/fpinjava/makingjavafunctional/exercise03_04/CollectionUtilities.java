@@ -1,5 +1,8 @@
 package com.fpinjava.makingjavafunctional.exercise03_04;
 
+import com.fpinjava.makingjavafunctional.exercise03_01.Result;
+import com.fpinjava.makingjavafunctional.exercise03_02.Case;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -26,14 +29,18 @@ public class CollectionUtilities {
   }
 
   public static <T> T head(List<T> list) {
-    throw new RuntimeException("To be implemented");
+    if (list.size() == 0) throw new IllegalStateException("head of empty list!");
+    return list.get(0);
   }
 
   private static <T> List<T > copy(List<T> ts) {
-    throw new RuntimeException("To be implemented");
+    return new ArrayList<>(ts);
   }
 
   public static <T> List<T> tail(List<T> list) {
-    throw new RuntimeException("To be implemented");
+    if (list.size() == 0) throw new IllegalStateException("tail of empty list!");
+    List<T> ts = copy(list);
+    ts.remove(0);
+    return Collections.unmodifiableList(ts);
   }
 }

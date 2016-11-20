@@ -56,10 +56,11 @@ public class CollectionUtilities {
     return result;
   }
 
-  public static <T, U> U foldRight(List<T> ts,
-                                   U identity,
-                                   Function<T, Function<U, U>> f) {
-    throw new RuntimeException("To be implemented");
+  public static <T, U> U foldRight(List<T> ts, U identity, Function<T, Function<U, U>> f) {
+    for (int i = ts.size() - 1; i >= 0; --i) {
+      identity = f.apply(ts.get(i)).apply(identity);
+    }
+    return identity;
   }
 
   public static <T> List<T> append(List<T> list, T t) {

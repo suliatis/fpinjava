@@ -90,9 +90,13 @@ public class CollectionUtilities {
     return foldRight(list, list(), x -> y -> prepend(f.apply(x), y));
   }
 
-  public static <T> List<T> unfold(T seed,
-                                   Function<T, T> f,
-                                   Function<T, Boolean> p) {
-    throw new RuntimeException("To be implemented");
+  public static <T> List<T> unfold(T seed, Function<T, T> f, Function<T, Boolean> p) {
+    List<T> ts = list();
+    T t = seed;
+    while (p.apply(t)) {
+      ts = append(ts, t);
+      t = f.apply(t);
+    }
+    return ts;
   }
 }
