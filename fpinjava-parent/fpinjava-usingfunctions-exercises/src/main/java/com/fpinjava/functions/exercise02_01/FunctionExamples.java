@@ -18,8 +18,12 @@ public class FunctionExamples {
     }
   };
 
-  public static final Function<Integer, Integer> compose(final Function<Integer, Integer> f1,
-                                                         final Function<Integer, Integer> f2) {
-    throw new RuntimeException("To be implemented.");
+  public static final Function<Integer, Integer> compose(final Function<Integer, Integer> f, final Function<Integer, Integer> g) {
+    return new Function<Integer, Integer>() {
+      @Override
+      public Integer apply(Integer i) {
+        return f.apply(g.apply(i));
+      }
+    };
   }
 }
